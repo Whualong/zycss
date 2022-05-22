@@ -1,0 +1,69 @@
+.form-radio{
+    --radio-bg-color:white;
+    --radio-bg-checked-color:#409eff;
+    --radio-bg-disabled-color:#f5f7fa;
+    --radio-border-color:#dcdfe6;
+    --radio-border-checked-color:#409eff;
+    --radio-border-disabled-color:#e4e7ed;
+    --radio-label-color:#606266;
+    --radio-label-checked-color:#409eff;
+    --radio-label-disabled-color:#c0c4cc;
+    --radio-size:20px;
+    @include flex-center();
+    &-input[type="radio"]{
+        position: relative;
+        @include circle(var(--radio-size));
+        @include flex-center();
+        cursor:pointer;
+        &::before{
+            @include fake-ele();
+            @include circle(var(--radio-size));
+            background: var(--radio-bg-color);
+            border:1px solid var(--radio-border-color);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        &::after{
+            @include fake-ele();
+            @include circle(40%);
+            background: white;
+            transition: 0.3s;
+        }
+        &:checked:not(:disabled){
+            --radio-bg-color:var(--radio-bg-checked-color);
+            --radio-border-color:var(--radio-border-checked-color);
+            &+.form-radio-label{
+                --radio-label-color:var(--radio-label-checked-color);
+            }
+        }
+        &:disabled:not(:checked){
+            --radio-bg-color:var(--radio-bg-disabled-color);
+            --radio-border-color:var(--radio-border-disabled-color);
+            cursor: not-allowed;
+            &+.form-radio-label{
+                cursor:not-allowed;
+                --radio-label-color:var(--radio-label-disabled-color);
+            }
+            &::after{
+                background:transparent;
+           }
+        }
+        &:disabled:checked{
+            --radio-bg-color:var(--radio-bg-disabled-color);
+            --radio-border-color:var(--radio-border-disabled-color);
+            cursor: not-allowed;
+            &+.form-radio-label{
+                cursor:not-allowed;
+                --radio-label-color:var(--radio-label-disabled-color);
+            }
+            &::after{
+                 background:#c0c4cc;
+            }
+        }
+    }
+    &-label{
+        color:var(--radio-label-color);
+        cursor: pointer;
+        margin-left: 8px;
+    }
+}

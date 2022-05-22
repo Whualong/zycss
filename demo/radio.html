@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <link rel="stylesheet" href="../dist/main.css">
+       <style>
+           .container{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+           }
+           .container>.form-radio{
+               margin:10px;
+           }
+       </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-radio">
+                <input class="form-radio-input" type="radio" name="gender" id="boy" checked>
+                <label class="form-radio-label" for="boy">男</label>
+            </div>
+            <div class="form-radio">
+                <input class="form-radio-input" type="radio" name="gender" id="gril">
+                <label class="form-radio-label" for="gril">女</label>
+            </div>
+            <div class="form-radio">
+                <input class="form-radio-input" type="radio" name="gender"  id="third" disabled checked>
+                <label class="form-radio-label" for="third">第三性别</label>
+            </div>   
+            <div class="form-radio">
+                <input class="form-radio-input" type="radio" name="gender" id="third" disabled>
+                <label class="form-radio-label" for="third">第三性别</label>
+            </div>     
+        </div>
+        
+    </body>
+</html>

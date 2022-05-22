@@ -1,0 +1,23 @@
+.form-radio {
+  --radio-bg-color:white;
+  --radio-border-color:#dcdfe6;
+  --radio-label-color:#606266;
+  cursor: pointer;
+}
+.form-radio-input[type=radio] {
+  background: var(--radio-bg-color);
+  border: 1px solid var(--radio-border-color);
+  position: relative;
+  cursor: inherit;
+}
+.form-radio-input[type=radio]:checked {
+  --radio-bg-color:#409eff;
+  --radio-border-color:var(--radio-bg-color);
+}
+.form-radio-input[type=radio]:checked + .form-radio-label {
+  --radio-label-color:#409eff;
+}
+.form-radio-label {
+  color: var(--radio-label-color);
+  cursor: inherit;
+}

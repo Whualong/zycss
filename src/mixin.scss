@@ -22,3 +22,8 @@
     justify-content: center;
     align-items: center;
 }
+@mixin fake-ele($position:absolute){
+    position: $position;
+    content: '';
+    display: block;
+}

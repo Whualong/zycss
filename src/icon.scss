@@ -1,9 +1,9 @@
 .close-icon{
-    --close-icon-line-color:white;
-    --close-icon-bg-color:var(--secondary-color-darker);
-    --close-icon-size:#{unit(5)};
+    --close-icon-line-color:var(--secondary-color-darker);;
+    --close-icon-bg-color:transparent;
+    --close-icon-size:#{unit(6)};
     --close-icon-line-width:#{unit(0.5)};
-    --close-icon-line-height:#{unit(3)};
+    --close-icon-line-length:#{unit(3)};
     position: relative;
     cursor: pointer;
     background: var(--close-icon-bg-color);
@@ -16,22 +16,186 @@
         content: '';
         background: var(--close-icon-line-color);
     }
-    &:hover{
-        --close-icon-bg-color:#409eff;
-    }
     &:hover::before,&:hover::after{
-        --close-icon-line-color:white;
+        --close-icon-line-color:#409eff;
     }
     &::before{
         top:50%;
         transform:translateY(-50%) rotateZ(-45deg);
-        width: var(--close-icon-line-height);
+        width: var(--close-icon-line-length);
         height: var(--close-icon-line-width);
     }
     &::after{
         left:50%;
-        height:var(--close-icon-line-height);
+        height:var(--close-icon-line-length);
         width: var(--close-icon-line-width);
         transform:translateX(-50%) rotateZ(-45deg);
+    }
+    &.circle{
+        --close-icon-line-color:white;
+        --close-icon-bg-color:var(--secondary-color-darker);
+        &:hover{
+            --close-icon-bg-color:#409eff;
+        }
+        &:hover::before,&:hover::after{
+            --close-icon-line-color:white;
+        }
+    }
+}
+
+.arrow-icon{
+    --arrow-icon-color:#606266;
+    --arrow-icon-bg-color:transparent;
+    --arrow-icon-line-width:2px;
+    --arrow-iocn-line-length:10px;
+    --arrow-icon-size:#{unit(6)};
+    @include circle(var(--arrow-icon-size));
+    position: relative;
+    cursor: pointer;
+    &:hover{
+        --arrow-icon-color:var(--primary-color);
+    }
+    &::before{
+        @include fake-ele();
+        width: var(--arrow-iocn-line-length);
+        height: var(--arrow-iocn-line-length);
+        border:var(--arrow-icon-line-width) solid var(--arrow-icon-color);
+    }
+
+    &.top::before{
+        transform: translate(50%,50%) rotateZ(45deg);
+        border-bottom: none;
+        border-right: none;
+    }
+    &.bottom::before{
+        transform: translate(50%,0%) rotateZ(-45deg);
+        border-top: none;
+        border-right: none;
+    }
+    &.left::before{
+        transform: translate(50%,25%) rotateZ(-45deg);
+        border-bottom: none;
+        border-right: none;
+    }
+    &.right::before{
+        transform: translate(-50%,25%) rotateZ(45deg);
+        border-bottom: none;
+        border-left: none;
+    }
+    &.circle{
+        --arrow-icon-bg-color:white;
+        border:1px solid var(--arrow-icon-color);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        transition: 0.3s;
+        &:hover{
+            --arrow-icon-bg-color:var(--primary-color);
+            background: var(--arrow-icon-bg-color);
+            border:1px solid var(--arrow-icon-bg-color);
+            &::before{
+                border:var(--arrow-icon-line-width) solid white;
+            }   
+        }
+        &.top::before{
+            transform: translateY(25%) rotateZ(45deg);
+            border-bottom: none;
+            border-right: none;
+        }
+        &.bottom::before{
+            transform: translateY(-25%) rotateZ(-45deg);
+            border-top: none;
+            border-right: none;
+        }
+        &.left::before{
+            transform: translateX(25%) rotateZ(-45deg);
+            border-bottom: none;
+            border-right: none;
+        }
+        &.right::before{
+            transform: translateX(-25%) rotateZ(45deg);
+            border-bottom: none;
+            border-left: none;
+        }
+    }
+}
+
+.plus-icon{
+    --plus-icon-line-color:#606266;
+    --plus-icon-bg-color:transparent;
+    --plus-icon-size:#{unit(6)};
+    --plus-icon-line-width:#{unit(0.5)};
+    --plus-icon-line-length:12px;
+    position: relative;
+    cursor: pointer;
+    background: var(--plus-icon-bg-color);
+    @include circle(var(--plus-icon-size));
+    @include flex-center();
+    transition: 0.3s;
+    &:hover{
+        --plus-icon-line-color:var(--primary-color);
+    }
+    &::before,&::after{
+        position: absolute;
+        display: block;
+        content: '';
+        background: var(--plus-icon-line-color);
+    }
+    &::before{
+        top:50%;
+        transform:translateY(-50%);
+        width: var(--plus-icon-line-length);
+        height: var(--plus-icon-line-width);
+    }
+    &::after{
+        left:50%;
+        height:var(--plus-icon-line-length);
+        width: var(--plus-icon-line-width);
+        transform:translateX(-50%);
+    }
+    &.circle{
+        border:1px solid var(--plus-icon-line-color);
+        &:hover{
+            --plus-icon-line-color:white;
+            background: var(--primary-color);
+            border:1px solid var(--primary-color);
+        }
+    }
+}
+.remove-icon{
+    --remove-icon-line-color:#606266;
+    --remove-icon-bg-color:transparent;
+    --remove-icon-size:#{unit(6)};
+    --remove-icon-line-width:#{unit(0.5)};
+    --remove-icon-line-length:12px;
+    position: relative;
+    cursor: pointer;
+    background: var(--remove-icon-bg-color);
+    @include circle(var(--remove-icon-size));
+    @include flex-center();
+    &:hover{
+        --remove-icon-line-color:var(--primary-color);
+    }
+    &::before{
+        position: absolute;
+        display: block;
+        content: '';
+        background: var(--remove-icon-line-color);
+    }
+    &::before{
+        top:50%;
+        transform:translateY(-50%);
+        width: var(--remove-icon-line-length);
+        height: var(--remove-icon-line-width);
+    }
+    &.circle{
+        border:1px solid var(--remove-icon-line-color);
+        transition: 0.3s;
+        &:hover{
+            --remove-icon-line-color:white;
+            background: var(--primary-color);
+            border:1px solid var(--primary-color);
+        }
     }
 }
