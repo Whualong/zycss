@@ -1,0 +1,90 @@
+.btn{
+    --btn-border-color:var(--bg-color);
+    --btn-color:white;
+    --btn-padding:#{unit(3)} #{unit(5)};
+    --btn-border-radius:#{unit(4)};
+    background: var(--btn-bg-color);
+    border:1px solid var(--btn-border-color);
+    border-radius: var(--btn-border-radius);
+    padding:var(--btn-padding);
+    color:var(--btn-color,white);
+    cursor: pointer;
+    font-size: #{textUnit(1.2)};
+    @each $type in $types{
+        @include btn-color-with-state($type);
+    }
+    &.round{
+        --btn-border-radius:15px;
+    }
+    &.circle{
+        --btn-border-radius:50%;
+        --btn-padding:#{unit(3)} #{unit(3)};
+    }
+    &.loading{
+        @include flex-center();
+        &::before{
+            content:'';
+            display: block;
+            @include circle(18px);
+            border:3px solid white;
+            clip-path: inset(0 0 50% 0);
+            animation: spin 0.6s linear infinite;
+            margin-right: 4px;
+        }
+    }
+    &.ghost{
+        --btn-border-color:var(--btn-bg-color);
+        --btn-color:var(--btn-bg-color);
+        background:white;
+        transition: 0.6s;
+        &:hover{
+           color:white;
+           background:var(--btn-bg-color);
+        }
+    }
+    &.dashed{
+        background: transparent;
+        color:var(--btn-bg-color);
+        border:1px dashed var(--btn-border-color);
+        --btn-border-color:var(--btn-bg-color);
+        --btn-color:var(--btn-bg-color);
+        background:white;
+        &:hover{
+           color:white;
+           background:var(--btn-bg-color);
+        }
+    }
+    &.link{
+        background: transparent;
+        border:none;
+        color:var(--primary-color);
+        cursor: pointer;
+        font-size: #{textUnit(1.2)};
+        &:hover{
+            text-decoration:underline;
+        }
+    }
+}
+.btn-group{
+    --divide-btn-color:var(--secondary-color-lighter,white);
+    display: inline-flex;
+    flex-wrap: nowrap;
+    .btn{
+        --border-color:var(--divide-btn-color);
+        border-top:none;
+        border-bottom: none;
+    }
+    .btn:not(:first-child):not(:last-child){
+        border-radius: 0;
+    }
+    .btn:first-child{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-left: none;
+    }
+    .btn:last-child{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-right: none;
+    }
+}

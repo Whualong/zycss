@@ -1,0 +1,24 @@
+@mixin btn-color-with-state($type){
+    &-#{$type}{
+        --btn-bg-color:var(--#{$type}-color);
+        --btn-border-color:var(--btn-bg-color);
+        &.disabled{
+            --btn-bg-color:var(--#{$type}-color-lighter);
+            cursor:not-allowed;
+        }
+    }
+}
+@mixin square ($width){
+    width:$width;
+    height: $width;
+}
+
+@mixin circle ($width){
+    @include square($width);
+    border-radius: 50%;
+}
+@mixin flex-center($display:inline-flex){
+    display: $display;
+    justify-content: center;
+    align-items: center;
+}

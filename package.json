@@ -1,0 +1,32 @@
+{
+  "name": "zycss",
+  "version": "0.0.0",
+  "description": "学习scss",
+  "main": "main.scss",
+  "scripts": {
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
+    "build-autoprefix": "postcss --use autoprefixer --map false --output dist/main.css dist/main.css",
+    "build-cleancss": "cleancss -o dist/main.min.css dist/main.css",
+    "build-clean": "rimraf dist",
+    "build-sass": "node-sass --output-style expanded --source-map true src/main.scss dist/main.css",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Whualong/zycss.git"
+  },
+  "keywords": [
+    "scss"
+  ],
+  "author": "Whualong",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "clean-css-cli": "^4.3.0",
+    "node-sass": "^5.0.0",
+    "postcss-cli": "^7.1.0",
+    "rimraf": "^3.0.2",
+    "vuepress": "^1.9.7"
+  }
+}

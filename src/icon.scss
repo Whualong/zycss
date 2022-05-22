@@ -1,0 +1,37 @@
+.close-icon{
+    --close-icon-line-color:white;
+    --close-icon-bg-color:var(--secondary-color-darker);
+    --close-icon-size:#{unit(5)};
+    --close-icon-line-width:#{unit(0.5)};
+    --close-icon-line-height:#{unit(3)};
+    position: relative;
+    cursor: pointer;
+    background: var(--close-icon-bg-color);
+    @include circle(var(--close-icon-size));
+    @include flex-center();
+    transition: 0.6s;
+    &::before,&::after{
+        position: absolute;
+        display: block;
+        content: '';
+        background: var(--close-icon-line-color);
+    }
+    &:hover{
+        --close-icon-bg-color:#409eff;
+    }
+    &:hover::before,&:hover::after{
+        --close-icon-line-color:white;
+    }
+    &::before{
+        top:50%;
+        transform:translateY(-50%) rotateZ(-45deg);
+        width: var(--close-icon-line-height);
+        height: var(--close-icon-line-width);
+    }
+    &::after{
+        left:50%;
+        height:var(--close-icon-line-height);
+        width: var(--close-icon-line-width);
+        transform:translateX(-50%) rotateZ(-45deg);
+    }
+}
